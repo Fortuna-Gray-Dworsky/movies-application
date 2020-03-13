@@ -1,13 +1,16 @@
-/**
- * es6 modules and imports
- */
-import sayHello from './hello';
-sayHello('World');
 
-/**
- * require style imports
- */
+// require style imports
 const {getMovies} = require('./api.js');
+const apiKey = require('./keys.js');
+const movieAPI = `http://www.omdbapi.com/?apikey=${apiKey}&t=`;
+
+// function test () {
+  fetch(movieAPI)
+      .then(response => response.json())
+      .then(response => console.log(response));
+// }
+// test();
+
 
 
 getMovies().then((movies) => {
@@ -19,3 +22,4 @@ getMovies().then((movies) => {
   alert('Oh no! Something went wrong.\nCheck the console for details.')
   console.log(error);
 });
+
