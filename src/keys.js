@@ -1,1 +1,1 @@
-const omdbKey = 'fd4e3da6';
+const omdbKey = "fd4e3da6";
