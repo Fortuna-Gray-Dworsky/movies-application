@@ -9,6 +9,7 @@ sayHello('World');
  */
 const {getMovies} = require('./api.js');
 
+
 getMovies().then((movies) => {
   console.log('Here are all the movies:');
   movies.forEach(({title, rating, id}) => {
