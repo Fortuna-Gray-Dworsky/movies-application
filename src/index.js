@@ -2,7 +2,7 @@
 // require style imports
 const {getMovies} = require('./api.js');
 const apiKey = require('./keys.js');
-const movieAPI = `http://www.omdbapi.com/?apikey=${apiKey}&t=`; //working in syntax to search for title
+const movieAPI = `http://www.omdbapi.com/?apikey=${apiKey}&t=star+wars`;        //working in syntax to search for title
 
   fetch(movieAPI)
       .then(response => response.json())
