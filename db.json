@@ -1,10 +1,24 @@
 {
   "movies": [
     {
-      "title": "test",
+      "title": "Chuck",
+      "rating": "TV-14",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTM0ODIwNjI3NF5BMl5BanBnXkFtZTcwODU2ODUzMw@@._V1_SX300.jpg",
+      "ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.2/10"
+        },
+        null,
+        null
+      ],
+      "type": "series",
+      "id": 2
+    },
+    {
+      "title": "Test",
       "rating": "6",
-      "id": 1
+      "id": 3
     }
-  ],
-  "series": []
+  ]
 }
