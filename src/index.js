@@ -4,6 +4,7 @@
 const $ = require('jquery');
 import sayHello from './hello';
 import {fetch} from "whatwg-fetch";
+
 sayHello('World');
 
 /**
@@ -12,8 +13,32 @@ sayHello('World');
 const omdbKey = require('./keys.js');
 const {getMovies} = require('./api.js');
 const url = `http://www.omdbapi.com/?apikey=${omdbKey}&`;
+//working in syntax to search for title
 
 
+// Function to grab movie data from API and push it as an object into db.json file
+// fetch(apiURL)
+//     .then(response => response.json())
+//     .then(response => {
+//         console.log(response);
+//         let userSearchMovie = {
+//             title: response.Title,
+//             rating: [response.Ratings[0], response.Ratings[1], response.Ratings[2]]
+//         };
+//         console.log(userSearchMovie);
+//
+//         //add eventlistener to 2 buttons, add to list and cancel
+//         //search db.json for duplicate movie title before adding to server
+//
+//         let options = {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify(userSearchMovie),
+//         };
+//         fetch('api/movies', options);
+//     });
 
 
 let yearInput = "";
@@ -24,55 +49,41 @@ const idSearch = url + `i=${idInput}`;
 
 // Fetch user input
 
-$("#searchButton").click( function () {
+$("#searchButton").click(function () {
     // Title Search function
     let titleInput = $('#userSearchValue').val();
     let titleFixed = titleInput.split(" ").join("+");
-    let titleSearch = url + `&t=${titleFixed}` ;
+    let titleSearch = url + `&t=${titleFixed}`;
     apiCall();
 
     function apiCall() {
-        fetch(titleSearch)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                $("#mediaContainer").html("");
-                $("#mediaContainer").append(
-                    '<div class="card" style="width: 18rem;">' +
+        if (titleInput === "") {
+            $("#mediaContainer").html("").append(
+                '<h1>No Movie Selected</h1>'
+            )
+        }
+        if (titleInput !== "") {
+            fetch(titleSearch)
+                .then((response) => {
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    $("#mediaContainer").html("").append(
+                        '<div class="card" style="width: 18rem;">' +
                         '<img src="' + data.Poster + '" class="card-img-top" alt="' + data.Title + '"/>' +
                         '<div class="card-body">' +
-                            '<h5 class="card-title">' + data.Title + '</h5>' +
-                            '<p class="card-text">Rated: ' + data.Rated + '</p>' +
-                            '<p class="card-text">Released: ' + data.Released + '</p>' +
-                            '<p class="card-text">Runtime: ' + data.Runtime + '</p>' +
+                        '<h5 class="card-title">' + data.Title + '</h5>' +
+                        '<p class="card-text">Rated: ' + data.Rated + '</p>' +
+                        '<p class="card-text">Released: ' + data.Released + '</p>' +
+                        '<p class="card-text">Runtime: ' + data.Runtime + '</p>' +
                         '</div>' +
-                    '</div>'
-                )
-            })
+                        '</div>'
+                    )
+                })
+        }
     }
-
-
 });
-
-
-// Fetch movie information
-// function apiCall() {
-//     fetch(titleSearch)
-//         .then((response) => {
-//             return response.json();
-//         })
-//         .then((data) => {
-//             console.log(data);
-//         })
-// }
-
-
-
-
-
-
 
 getMovies().then((movies) => {
     console.log('Here are all the movies:');
@@ -83,3 +94,29 @@ getMovies().then((movies) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.');
     console.log(error);
 });
+
+
+// mainRender();
+// //New Movie Add
+// $('.submitButton').click(function () {
+//     //Store user-submitted title
+//     let userTitle = $('#userTitle').val();
+//     //Store user-submitted rating
+//     let userRating = $('#userRating').val();
+//
+//     let userAddMovie = {
+//         title: userTitle,
+//         rating: userRating
+//     };
+//     let options = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(userAddMovie),
+//     };
+//     fetch('api/movies', options);
+//     userTitle = "";
+//     userRating = "";
+//     mainRender();
+// });
