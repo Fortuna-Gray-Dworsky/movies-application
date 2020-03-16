@@ -1,34 +1,10 @@
 {
   "movies": [
     {
-      "title": "Casablanca",
-      "rating": "4",
+      "title": "test",
+      "rating": "6",
       "id": 1
-    },
-    {
-      "title": "Star Wars: A New Hope",
-      "rating": "5",
-      "id": 2
-    },
-    {
-      "title": "Knives Out",
-      "rating": "7",
-      "id": 3
-    },
-    {
-      "title": "Get Smart",
-      "rating": "5",
-      "id": 4
-    },
-    {
-      "title": "Mean Girls",
-      "rating": "9",
-      "id": 5
-    },
-    {
-      "title": "The Departed",
-      "rating": "7",
-      "id": 6
-    },
-  ]
+    }
+  ],
+  "series": []
 }
