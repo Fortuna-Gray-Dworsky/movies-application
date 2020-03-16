@@ -29,7 +29,6 @@ $("#searchButton").click( function () {
     let titleInput = $('#userSearchValue').val();
     let titleFixed = titleInput.split(" ").join("+");
     let titleSearch = url + `&t=${titleFixed}` ;
-    console.log(titleSearch);
     apiCall();
 
     function apiCall() {
@@ -41,12 +40,15 @@ $("#searchButton").click( function () {
                 console.log(data);
                 $("#mediaContainer").html("");
                 $("#mediaContainer").append(
-                    '<h3>' + data.Title + '</h3>' +
-                    '<img src="' + data.Poster + '"/>' +
-                    '<h3>' + "Released: " + data.Year + '</h3>' +
-                    '<h3>' + "Rated: " + data.Rated + '</h3>' +
-                    '<h3>' + "Release Date: " + data.Released + '</h3>' +
-                    '<h3>' + "Runtime: " + data.Runtime + '</h3>'
+                    '<div class="card" style="width: 18rem;">' +
+                        '<img src="' + data.Poster + '" class="card-img-top" alt="' + data.Title + '"/>' +
+                        '<div class="card-body">' +
+                            '<h5 class="card-title">' + data.Title + '</h5>' +
+                            '<p class="card-text">Rated: ' + data.Rated + '</p>' +
+                            '<p class="card-text">Released: ' + data.Released + '</p>' +
+                            '<p class="card-text">Runtime: ' + data.Runtime + '</p>' +
+                        '</div>' +
+                    '</div>'
                 )
             })
     }
