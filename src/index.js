@@ -58,15 +58,15 @@ $("#searchButton").click( function () {
 
 
 // Fetch movie information
-function apiCall() {
-    fetch(titleSearch)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-        })
-}
+// function apiCall() {
+//     fetch(titleSearch)
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then((data) => {
+//             console.log(data);
+//         })
+// }
 
 
 
