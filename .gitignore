@@ -2,7 +2,6 @@
 *.iml
 .DS_STORE
 keys.js
-
 node_modules/
 main.js
 *.map
