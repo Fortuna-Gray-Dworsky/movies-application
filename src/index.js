@@ -6,7 +6,9 @@ const movieAPI = `http://www.omdbapi.com/?apikey=${apiKey}&t=star+wars`;        
 
 fetch(movieAPI)
     .then(response => response.json())
-    .then(response => console.log(response));
+    .then(response => {
+        console.log(response);
+    });
 
 //Main Render
 function mainRender() {
