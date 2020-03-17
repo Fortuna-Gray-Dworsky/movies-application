@@ -14,6 +14,60 @@
       ],
       "type": "series",
       "id": 1
+    },
+    {
+      "title": "Onward",
+      "rating": [
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "82%"
+        },
+        null,
+        null
+      ],
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTZlYzk3NzQtMmViYS00YWZmLTk5ZTEtNWE0NGVjM2MzYWU1XkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX300.jpg",
+      "ratings": [
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "82%"
+        }
+      ],
+      "type": "movie",
+      "id": 2
+    },
+    {
+      "title": "Knives Out",
+      "rating": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.0/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "97%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "82/100"
+        }
+      ],
+      "poster": "https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg",
+      "ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.0/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "97%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "82/100"
+        }
+      ],
+      "type": "movie",
+      "id": 3
     }
   ]
 }

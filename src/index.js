@@ -8,8 +8,8 @@ $(document).ready(function () {
     const url = `http://www.omdbapi.com/?apikey=${omdbKey}&`;
     let movieTitleList = [];
 
-    // Checks db.json for movie titles
-    function getMovieData() {
+    // Stores db.json movie titles inside empty array
+    function getMovieTitles() {
         fetch('./api/movies')
             .then(function (resp) {
                 return resp.json();
@@ -22,7 +22,7 @@ $(document).ready(function () {
         return movieTitleList;
     }
 
-    getMovieData();
+    getMovieTitles();
 
 
     // User-submitted search: event-listener and potential API fetch
@@ -55,6 +55,7 @@ $(document).ready(function () {
                 fetch(titleSearch)
                     .then(response => response.json())
                     .then(response => {
+                        movieTitleList.push(response.Title);
                         let userSearchMovie = {
                             title: response.Title,
                             rating: [response.Ratings[0], response.Ratings[1], response.Ratings[2]],
@@ -75,7 +76,6 @@ $(document).ready(function () {
             }
 
         }
-
         renderMovieCards();
     });
 
