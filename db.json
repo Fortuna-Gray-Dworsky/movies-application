@@ -13,12 +13,7 @@
         null
       ],
       "type": "series",
-      "id": 2
-    },
-    {
-      "title": "Test",
-      "rating": "6",
-      "id": 3
+      "id": 1
     }
-  ]
+    ]
 }
