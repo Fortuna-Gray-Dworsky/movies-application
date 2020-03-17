@@ -2,15 +2,36 @@
 const $ = require('jquery');
 
 $(document).ready(function () {
+
     const omdbKey = require('./keys.js');
     const {getMovies} = require('./api.js');
     const url = `http://www.omdbapi.com/?apikey=${omdbKey}&`;
+    let movieTitleList = [];
+    let allMovieList = [];
 
 // let yearInput = "";
 // const yearSearch = url + `y=${yearInput}`;
 // let idInput = "";
 // const idSearch = url + `i=${idInput}`;
 
+
+// Checks db.json for movie titles //
+// V FINISHED V //
+    function getMovieData() {
+        fetch('./api/movies')
+            .then(function (resp) {
+                return resp.json();
+            })
+            .then(function (data) {
+                data.forEach(function (movieInfo) {
+                    allMovieList.push(movieInfo);
+                    movieTitleList.push(movieInfo.title);
+                })
+            });
+        return movieTitleList;
+    }
+    getMovieData();
+// ^ FINISHED ^ //
 
 // Fetch user input
     $("#searchButton").click(function () {
@@ -19,7 +40,7 @@ $(document).ready(function () {
             let titleInput = $('#userSearchValue').val();
             let titleFixed = titleInput.split(" ").join("+");
             let titleSearch = url + `&t=${titleFixed}`;
-            apiCall();
+
 
             function apiCall() {
 
@@ -29,45 +50,20 @@ $(document).ready(function () {
                 }
 
                 if (titleInput !== "") {
-                    getMovieData();
+                    console.log("IT WORKS");
 
-
+                    allMovieList.forEach( function (movie) {
+                        if (((movie.title).toLowerCase()) === ((titleInput).toLowerCase())) {
+                            populateCardDB(movie);
+                        }
+                    })
                 }
-
-
-                // if ((movies.title).toLowerCase() === (titleInput).toLowerCase()) {
-                //     populateCardDB(movies);
-
-
-                // fetch(titleSearch)
-                //     .then((response) => {
-                //         return response.json();
-                //     })
-                //     .then((data) => {
-                //         if ((data.Title).toLowerCase().includes((titleInput).toLowerCase())) {
-                //             addMovie(data);
-                //             populateCard(data);
-                //         }
-                //     })
             }
+        apiCall();
         }
     );
 
 
-// Checks db.json for movie titles
-    function getMovieData(checkIfMovieExists) {
-        let movieList = [];
-        fetch('./api/movies')
-            .then(function (resp) {
-                return resp.json();
-            })
-            .then(function (data) {
-                data.forEach(function (movieInfo) {
-                    movieList.push((movieInfo.title).toLowerCase());
-                })
-            });
-        return movieList;
-    }
 
 
 // Populates card with info.
@@ -88,22 +84,26 @@ $(document).ready(function () {
         )
     }
 
-    function populateCardDB(movies) {
+    function populateCardDB(movie) {
         $("#mediaContainer").html("").append(
             '<div class="card" style="width: 18rem;">' +
-            '<img src="' + movies.Poster + '" class="card-img-top" alt="' + movies.title + '"/>' +
+            '<img src="' + movie.poster + '" class="card-img-top" alt="' + movie.title + '"/>' +
             '<div class="card-body">' +
             '<div class="row">' +
-            '<h5 class="card-title col-6 text-left">' + movies.Title + '</h5>' +
+            '<h5 class="card-title col-6 text-left">' + movie.title + '</h5>' +
             '<a href="#" class="col-6 text-right">More Info</a>' +
             '</div>' +
-            '<p class="card-text text-center">Rated: ' + movies.Rated + '</p>' +
-            '<p class="card-text text-center">Released: ' + movies.Released + '</p>' +
-            '<p class="card-text text-center">Runtime: ' + movies.Runtime + '</p>' +
+            '<p class="card-text text-center">Rated: ' + movie.rating + '</p>' +
+            // '<p class="card-text text-center">Released: ' + movie.released + '</p>' +
+            // '<p class="card-text text-center">Runtime: ' + movie.runtime + '</p>' +
             '</div>' +
             '</div>'
         )
     }
+
+
+
+
 
 // // Populates card with info.
 // function populateCard(data) {
