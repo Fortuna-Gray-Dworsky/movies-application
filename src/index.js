@@ -1,6 +1,6 @@
 "use strict";
-const $ = require('jquery');
 
+const $ = require('jquery');
 $(document).ready(function () {
 
     const omdbKey = require('./keys.js');
@@ -15,8 +15,7 @@ $(document).ready(function () {
 // const idSearch = url + `i=${idInput}`;
 
 
-// Checks db.json for movie titles //
-// V FINISHED V //
+// Checks db.json for movie titles
     function getMovieData() {
         fetch('./api/movies')
             .then(function (resp) {
@@ -30,40 +29,65 @@ $(document).ready(function () {
             });
         return movieTitleList;
     }
+
     getMovieData();
-// ^ FINISHED ^ //
 
 // Fetch user input
     $("#searchButton").click(function () {
 
-            // Title Search function
+            // Convert title to readable string for fetch url
             let titleInput = $('#userSearchValue').val();
             let titleFixed = titleInput.split(" ").join("+");
             let titleSearch = url + `&t=${titleFixed}`;
 
 
             function apiCall() {
-
                 if (titleInput === "") {
+                    // Check if input is empty
                     $("#mediaContainer").html("");
                     alert("No Movie Selected");
-                }
-
-                if (titleInput !== "") {
-                    console.log("IT WORKS");
-
-                    allMovieList.forEach( function (movie) {
+                } else if (titleInput !== "") {
+                    allMovieList.forEach(function (movie) {
                         if (((movie.title).toLowerCase()) === ((titleInput).toLowerCase())) {
                             populateCardDB(movie);
+                        } else {
+                            // Function to grab movie data from API and push it as an object into db.json file
+                            fetch(titleSearch)
+                                .then(response => response.json())
+                                .then(response => {
+                                    let userSearchMovie = {
+                                        title: response.Title,
+                                        rating: [response.Ratings[0], response.Ratings[1], response.Ratings[2]],
+                                        poster: response.Poster,
+                                        ratings: response.Ratings,
+                                        type: response.Type
+                                    };
+                                    console.log(userSearchMovie);
+
+                                    //add eventlistener to 2 buttons, add to list and cancel
+                                    //search db.json for duplicate movie title before adding to server
+
+                                    let options = {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(userSearchMovie),
+                                    };
+                                    movieTitleList = [];
+                                    getMovieData();
+                                    fetch('api/movies', options);
+                                    populateCardDB();
+                                    populateCard(response);
+                                });
                         }
                     })
                 }
             }
-        apiCall();
+
+            apiCall();
         }
     );
-
-
 
 
 // Populates card with info.
@@ -100,9 +124,6 @@ $(document).ready(function () {
             '</div>'
         )
     }
-
-
-
 
 
 // // Populates card with info.
@@ -185,30 +206,6 @@ $(document).ready(function () {
 //     userRating = "";
 //     mainRender();
 // });
-
-// Function to grab movie data from API and push it as an object into db.json file
-// fetch(apiURL)
-//     .then(response => response.json())
-//     .then(response => {
-//         console.log(response);
-//         let userSearchMovie = {
-//             title: response.Title,
-//             rating: [response.Ratings[0], response.Ratings[1], response.Ratings[2]]
-//         };
-//         console.log(userSearchMovie);
-//
-//         //add eventlistener to 2 buttons, add to list and cancel
-//         //search db.json for duplicate movie title before adding to server
-//
-//         let options = {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(userSearchMovie),
-//         };
-//         fetch('api/movies', options);
-//     });
 
 
 });
