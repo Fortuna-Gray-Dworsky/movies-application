@@ -34,6 +34,9 @@ $(window).on("load", function () {
     });
 
 
+
+
+
     // Render cards from either local server if available or API if not stored locally
     function seeIfMovieExistsLocally() {
 
@@ -102,13 +105,13 @@ $(window).on("load", function () {
                     },
                     body: JSON.stringify(movieData)
                 };
-                if (confirm("Movie found! Would you like to add it to your list?") === true) {
+                if (confirm("Movie found! Would you like to add it to your list?")) {
                     fetch('api/movies', options);
                     movieTitleList.push((response.Title).toLowerCase());
                     populateCard(response);
                 } else {
                     alert("Ok! Movie not added");
-                    populateCard(response);
+                    $("#mediaContainer").html("");
                 }
             })
     }
@@ -117,7 +120,7 @@ $(window).on("load", function () {
     // Renders card from db.json information
     function populateCard(movie) {
         $("#mediaContainer").html("").append(
-            '<div class="card" style="width: 18rem;">' +
+            '<div id="' + movie.id + '" class="card" style="width: 18rem;">' +
             '<img src="' + movie.Poster + '" class="card-img-top" alt="' + movie.Title + '"/>' +
             '<div class="card-body pt-0">' +
             '<div class="row">' +
@@ -137,7 +140,13 @@ $(window).on("load", function () {
             `<p class="col-6 card-text text-center">${movie.Runtime}</p>` +
             '</div>' +
             '</div>' +
+            '<button class="deleteCard" type="button">Delete Movie</button>' +
             '</div>'
-        )
+        );
+        console.log(movie.id);
     }
+
+
+
+
 });

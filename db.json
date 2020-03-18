@@ -64,6 +64,42 @@
       "imdbID": "tt1637725",
       "Type": "movie",
       "id": 2
+    },
+    {
+      "Title": "Knives Out",
+      "Year": "2019",
+      "Rated": "PG-13",
+      "Released": "27 Nov 2019",
+      "Runtime": "131 min",
+      "Genre": "Comedy, Crime, Drama, Mystery, Thriller",
+      "Director": "Rian Johnson",
+      "Writer": "Rian Johnson",
+      "Actors": "Daniel Craig, Chris Evans, Ana de Armas, Jamie Lee Curtis",
+      "Plot": "A detective investigates the death of a patriarch of an eccentric, combative family.",
+      "Language": "English, Spanish, Hindi",
+      "Country": "USA",
+      "Awards": "Nominated for 1 Oscar. Another 43 wins & 86 nominations.",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg",
+      "Ratings": [
+        {
+          "Source": "Internet Movie Database",
+          "Value": "8.0/10"
+        },
+        {
+          "Source": "Rotten Tomatoes",
+          "Value": "97%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "82/100"
+        }
+      ],
+      "Metascore": "82",
+      "imdbRating": "8.0",
+      "imdbVotes": "189,130",
+      "imdbID": "tt8946378",
+      "Type": "movie",
+      "id": 3
     }
   ]
 }
