@@ -5,7 +5,6 @@ $(window).on("load", function () {
     $(".loader-wrapper").fadeOut("slow");
 }).ready(function () {
 
-
     const omdbKey = require('./keys.js');
     const {getMovies} = require('./api.js');
     const url = `http://www.omdbapi.com/?apikey=${omdbKey}&`;
@@ -25,7 +24,14 @@ $(window).on("load", function () {
             return movieTitleList;
         })
     }
+
     getMovieTitles();
+
+
+    // User-submitted search: event-listener and potential API fetch
+    $("#searchButton").click(function () {
+        seeIfMovieExistsLocally();
+    });
 
 
     // Render cards from either local server if available or API if not stored locally
@@ -42,31 +48,24 @@ $(window).on("load", function () {
             $("#mediaContainer").html("").finish(alert("No Movie Selected"));
 
         }
-        // Checks if in
-        if ((movieTitleList).includes((titleInput).toLowerCase())) {
+        // Checks if movie is in db.json
+        else if ((movieTitleList).includes((titleInput).toLowerCase())) {
             console.log(`Movie List already contains ${titleInput}.`);
             console.log(`Fetching movie information`);
-            renderCards(titleInput);
-
-        } else if (!(movieTitleList).includes((titleInput.toLowerCase()))) {
-            console.log("Oops! Movie not found, Searching for your movie now!");
-            findMovieFromAPI(titleSearch);
-        }
-
-
-        // forEach to loop through for rendering the card the user searched for.
-        function renderCards() {
             getMovies().then(function (data) {
                 data.forEach(function (movie) {
-                    if (((movie.Title).toLowerCase()) === (((titleInput).toLowerCase()))) {
-                        console.log("Now showing Information for: " + movie.Title);
+                    if (((movie.Title).toLowerCase()).includes((titleInput).toLowerCase())) {
                         populateCard(movie);
                     }
                 })
             })
         }
+        //Fetch movie data from API
+        else {
+            console.log("Oops! Movie not found, Searching for your movie now!");
+            findMovieFromAPI(titleSearch);
+        }
     }
-
 
     // Searches API for movie information
     function findMovieFromAPI(titleSearch) {
@@ -103,13 +102,15 @@ $(window).on("load", function () {
                     },
                     body: JSON.stringify(movieData)
                 };
-                fetch('api/movies', options);
-            }).then(function () {
-            movieTitleList = [];
-            console.log("Found your movie, just a little bit more...");
-            getMovieTitles();
-            alert("Your movie has been found! Please search again.");
-        })
+                if (confirm("Movie found! Would you like to add it to your list?") === true) {
+                    fetch('api/movies', options);
+                    movieTitleList.push((response.Title).toLowerCase());
+                    populateCard(response);
+                } else {
+                    alert("Ok! Movie not added");
+                    populateCard(response);
+                }
+            })
     }
 
 
@@ -139,11 +140,4 @@ $(window).on("load", function () {
             '</div>'
         )
     }
-
-
-// User-submitted search: event-listener and potential API fetch
-    $("#searchButton").click(function () {
-        seeIfMovieExistsLocally();
-    });
-
 });
