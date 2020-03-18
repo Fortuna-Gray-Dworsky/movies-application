@@ -1,72 +1,104 @@
 {
   "movies": [
     {
-      "title": "Chuck",
-      "rating": "TV-14",
-      "poster": "https://m.media-amazon.com/images/M/MV5BMTM0ODIwNjI3NF5BMl5BanBnXkFtZTcwODU2ODUzMw@@._V1_SX300.jpg",
-      "ratings": [
+      "Title": "Chuck",
+      "Year": "2007–2012",
+      "Rated": "TV-14",
+      "Released": "24 Sep 2007",
+      "Runtime": "43 min",
+      "Genre": "Action, Comedy, Drama",
+      "Director": "N/A",
+      "Writer": "Chris Fedak, Josh Schwartz",
+      "Actors": "Zachary Levi, Yvonne Strahovski, Joshua Gomez, Vik Sahay",
+      "Plot": "When a twenty-something computer geek inadvertently downloads critical government secrets into his brain, the C.I.A. and the N.S.A. assign two agents to protect him and exploit such knowledge, turning his life upside down.",
+      "Language": "English",
+      "Country": "USA",
+      "Awards": "Won 2 Primetime Emmys. Another 7 wins & 32 nominations.",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTM0ODIwNjI3NF5BMl5BanBnXkFtZTcwODU2ODUzMw@@._V1_SX300.jpg",
+      "Ratings": [
         {
           "Source": "Internet Movie Database",
           "Value": "8.2/10"
-        },
-        null,
-        null
+        }
       ],
-      "type": "series",
+      "Metascore": "N/A",
+      "imdbRating": "8.2",
+      "imdbVotes": "123,389",
+      "imdbID": "tt0934814",
+      "Type": "series",
+      "totalSeasons": "5",
       "id": 1
     },
     {
-      "title": "Onward",
-      "rating": [
+      "Title": "Ted",
+      "Year": "2012",
+      "Rated": "R",
+      "Released": "29 Jun 2012",
+      "Runtime": "106 min",
+      "Genre": "Comedy",
+      "Director": "Seth MacFarlane",
+      "Writer": "Seth MacFarlane (screenplay by), Alec Sulkin (screenplay by), Wellesley Wild (screenplay by), Seth MacFarlane (story by)",
+      "Actors": "Mark Wahlberg, Mila Kunis, Seth MacFarlane, Joel McHale",
+      "Plot": "John Bennett, a man whose childhood wish of bringing his teddy bear to life came true, now must decide between keeping the relationship with the bear or his girlfriend, Lori.",
+      "Language": "English, Japanese",
+      "Country": "USA",
+      "Awards": "Nominated for 1 Oscar. Another 13 wins & 27 nominations.",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1OTU0ODcxMV5BMl5BanBnXkFtZTcwOTMxNTUwOA@@._V1_SX300.jpg",
+      "Ratings": [
         {
-          "Source": "Rotten Tomatoes",
-          "Value": "82%"
+          "Source": "Internet Movie Database",
+          "Value": "6.9/10"
         },
-        null,
-        null
-      ],
-      "poster": "https://m.media-amazon.com/images/M/MV5BMTZlYzk3NzQtMmViYS00YWZmLTk5ZTEtNWE0NGVjM2MzYWU1XkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX300.jpg",
-      "ratings": [
         {
           "Source": "Rotten Tomatoes",
-          "Value": "82%"
+          "Value": "68%"
+        },
+        {
+          "Source": "Metacritic",
+          "Value": "62/100"
         }
       ],
-      "type": "movie",
+      "Metascore": "62",
+      "imdbRating": "6.9",
+      "imdbVotes": "551,431",
+      "imdbID": "tt1637725",
+      "Type": "movie",
       "id": 2
     },
     {
-      "title": "Knives Out",
-      "rating": [
+      "Title": "Ted 2",
+      "Year": "2015",
+      "Rated": "R",
+      "Released": "26 Jun 2015",
+      "Runtime": "115 min",
+      "Genre": "Comedy",
+      "Director": "Seth MacFarlane",
+      "Writer": "Seth MacFarlane, Alec Sulkin, Wellesley Wild, Seth MacFarlane (based on characters created by)",
+      "Actors": "Mark Wahlberg, Seth MacFarlane, Amanda Seyfried, Jessica Barth",
+      "Plot": "Newlywed couple Ted and Tami-Lynn want to have a baby, but in order to qualify to be a parent, Ted will have to prove he's a person in a court of law.",
+      "Language": "English",
+      "Country": "USA",
+      "Awards": "3 wins & 4 nominations.",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMjEwMDg3MDk1NF5BMl5BanBnXkFtZTgwNjYyODA1NTE@._V1_SX300.jpg",
+      "Ratings": [
         {
           "Source": "Internet Movie Database",
-          "Value": "8.0/10"
+          "Value": "6.3/10"
         },
         {
           "Source": "Rotten Tomatoes",
-          "Value": "97%"
+          "Value": "45%"
         },
         {
           "Source": "Metacritic",
-          "Value": "82/100"
+          "Value": "48/100"
         }
       ],
-      "poster": "https://m.media-amazon.com/images/M/MV5BMGUwZjliMTAtNzAxZi00MWNiLWE2NzgtZGUxMGQxZjhhNDRiXkEyXkFqcGdeQXVyNjU1NzU3MzE@._V1_SX300.jpg",
-      "ratings": [
-        {
-          "Source": "Internet Movie Database",
-          "Value": "8.0/10"
-        },
-        {
-          "Source": "Rotten Tomatoes",
-          "Value": "97%"
-        },
-        {
-          "Source": "Metacritic",
-          "Value": "82/100"
-        }
-      ],
-      "type": "movie",
+      "Metascore": "48",
+      "imdbRating": "6.3",
+      "imdbVotes": "174,194",
+      "imdbID": "tt2637276",
+      "Type": "movie",
       "id": 3
     }
   ]
