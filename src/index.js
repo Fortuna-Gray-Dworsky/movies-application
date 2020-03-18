@@ -51,6 +51,19 @@ $(document).ready(function () {
             console.log("Oops! Movie not found, Searching for your movie now!");
             findMovieFromAPI(titleSearch);
         }
+
+
+        // forEach to loop through for rendering the card the user searched for.
+        function renderCards() {
+            getMovies().then(function (data) {
+                data.forEach(function (movie) {
+                    if (movie.Title.includes(titleInput)) {
+                        console.log("Now showing Information for: " + movie.Title);
+                        populateCard(movie);
+                    }
+                })
+            })
+        }
     }
 
 
@@ -100,23 +113,14 @@ $(document).ready(function () {
             movieTitleList = [];
             console.log("Found your movie, just a little bit more...");
             getMovieTitles();
+            alert("Your movie has been found! Please search again.");
         })
     }
 
 
 
 
-    // forEach to loop through for rendering the card the user searched for.
-    function renderCards(titleInput) {
-        getMovies().then(function (data) {
-            data.forEach(function (movie) {
-                if (movie.Title.includes(titleInput)) {
-                    console.log("Now showing Information for: " + movie.Title);
-                    populateCard(movie);
-                }
-            })
-        })
-    }
+
 
 
 
