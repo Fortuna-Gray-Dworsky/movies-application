@@ -1,8 +1,10 @@
 "use strict";
 const $ = require('jquery');
 
+$(window).on("load", function () {
+    $(".loader-wrapper").fadeOut("slow");
+}).ready(function () {
 
-$(document).ready(function () {
 
     const omdbKey = require('./keys.js');
     const {getMovies} = require('./api.js');
@@ -24,7 +26,6 @@ $(document).ready(function () {
         })
     }
     getMovieTitles();
-
 
 
     // Render cards from either local server if available or API if not stored locally
@@ -57,7 +58,7 @@ $(document).ready(function () {
         function renderCards() {
             getMovies().then(function (data) {
                 data.forEach(function (movie) {
-                    if (movie.Title.includes(titleInput)) {
+                    if (((movie.Title).toLowerCase()) === (((titleInput).toLowerCase()))) {
                         console.log("Now showing Information for: " + movie.Title);
                         populateCard(movie);
                     }
@@ -65,12 +66,6 @@ $(document).ready(function () {
             })
         }
     }
-
-
-
-
-
-
 
 
     // Searches API for movie information
@@ -109,19 +104,13 @@ $(document).ready(function () {
                     body: JSON.stringify(movieData)
                 };
                 fetch('api/movies', options);
-            }).then( function () {
+            }).then(function () {
             movieTitleList = [];
             console.log("Found your movie, just a little bit more...");
             getMovieTitles();
             alert("Your movie has been found! Please search again.");
         })
     }
-
-
-
-
-
-
 
 
     // Renders card from db.json information
@@ -138,7 +127,7 @@ $(document).ready(function () {
             '<p class="col-6 card-text text-center">Rated: </p>' +
             `<p class="col-6 card-text text-center">${movie.Rated}</p>` +
             '</div>' +
-            '<div class="row">'+
+            '<div class="row">' +
             '<p class="col-6 card-text text-center">Released: ' + '</p>' +
             `<p class="col-6 card-text text-center">${movie.Released}</p>` +
             '</div>' +
@@ -150,9 +139,6 @@ $(document).ready(function () {
             '</div>'
         )
     }
-
-
-
 
 
 // User-submitted search: event-listener and potential API fetch
