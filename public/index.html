@@ -4,28 +4,46 @@
     <meta charset="UTF-8"/>
     <title>My Application</title>
     <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
 
 
-
-
-<div class="container">
-    <form action="#">
-        <input id="userSearchValue" type="text" placeholder="Search for A movie"/>
-        <input id="searchButton" type="submit"/>
-    </form>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center">
+                    <form action="#">
+                        <input id="userSearchValue" type="text" placeholder="Search for A movie"/>
+                        <input id="searchButton" type="submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <h1>Movie List</h1>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="text-center">
+                                    <div id="mediaContainer" class="text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
-<div class="container">
-    <h1>Movie List</h1>
-    <div id="mediaContainer">
-
-    </div>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
 </div>
 
 
